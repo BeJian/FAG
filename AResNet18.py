@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import f1_score, confusion_matrix, ConfusionMatrixDisplay, classification_report
 import torch
 import torch.nn as nn
-channel = 3
+channel = 1
 
 
 class SpatialAttention(nn.Module):
@@ -316,7 +316,7 @@ early_stop = 20
 
 norm = [0.5] if channel == 1 else [0.5, 0.5, 0.5]
 transform = transforms.Compose([
-    # transforms.Grayscale(num_output_channels=channel),  # for grayscale img
+    transforms.Grayscale(num_output_channels=channel), 
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
     # AddGaussianNoise(mean=0., std=0.15),  # Add Gaussian Noise
